@@ -1,110 +1,124 @@
-public class Neighborhood{
+public class Neighborhood {
     private int numHouses;
     private House[] houses;
 
-    public Neighborhood(){
+    public Neighborhood() {
         this.numHouses = 0;
         House[] hArr = new House[5];
         this.houses = hArr;
     }
 
-    public Neighborhood(House[] houses){
+    public Neighborhood(House[] houses) {
         this.numHouses = 0;
         this.houses = houses;
     }
-    public static void main(String[] args){
-        System.out.println("hi");
+    public void setNumHouses(int numHouses) {
+        this.numHouses = numHouses;
     }
-    public void displayNewHouses(int year){
-        for(House house : this.houses){
+    public void setHouses(House[] houses) {
+        this.houses = houses;
+    }
+    public int getNumHouses() {
+        return this.numHouses;
+    }
+    public House[] getHouses() {
+        return this.houses;
+    }
+    public void displayNewHouses(int year) {
+        for (House house : houses) {
             String renovated = "";
-            if(house.getIsRenovated() == true){
-                renovated = "has";
-            }
-            else{
-                renovated = "has not";
-            }
-            if(house.getYearBuilt() == year) {
-                System.out.println("House located at " + house.getAddress() + " was built in " + house.getYearBuilt() + ", has " + house.getNumBaths() + " number of bathrooms, and " + renovated + " been renovated recently.");
+            if (house != null) {
+                if (house.getIsRenovated()) {
+                    renovated = "has";
+                } else {
+                    renovated = "has not";
+                }
+                if (house.getYearBuilt() >= year) {
+                    System.out.println("House located at " + house.getAddress()
+                            + " was built in "
+                            + house.getYearBuilt()
+                            + ", has " + house.getNumBaths()
+                            + " number of bathrooms, and "
+                            + renovated + " been renovated recently.");
+                }
             }
         }
     }
-    public House addHouse(int index, House new_house){
-        //House new_house = new House();
-        if(index >= this.houses.length){
+    public House addHouse(int index, House newHouse) {
+        //House newHouse = new House();
+        if (index >= this.houses.length) {
             return null;
         }
-        if(this.houses[index] == null){
-            this.houses[index] = new_house;
+        if (this.houses[index] == null) {
+            this.houses[index] = newHouse;
             return null;
-        }
-        else if(index < this.houses.length){
-            House old_house = this.houses[index];
+        } else if (index < this.houses.length) {
+            House oldHouse = this.houses[index];
             this.numHouses += 1;
-            this.houses[index] = new_house;
-            return old_house;
-        }
-        else{
+            this.houses[index] = newHouse;
+            return oldHouse;
+        } else {
             return null;
         }
     }
 //    public House addHouse(int index,String address,double numBaths){
-//        House new_house = new House(address,numBaths);
+//        House newHouse = new House(address,numBaths);
 //        if(index >= this.houses.length){
 //            return null;
 //        }
 //        if(this.houses[index] == null){
-//            this.houses[index] = new_house;
+//            this.houses[index] = newHouse;
 //            return null;
 //        }
 //        else if(index < this.houses.length){
-//            House old_house = this.houses[index];
+//            House oldHouse = this.houses[index];
 //            this.numHouses += 1;
-//            this.houses[index] = new_house;
-//            return old_house;
+//            this.houses[index] = newHouse;
+//            return oldHouse;
 //        }
 //        else{
 //            return null;
 //        }
 //    }
-//    public House addHouse(int index,String address,int yearBuilt,double numBaths,boolean isRenovated){
-//        House new_house = new House(address,yearBuilt,numBaths,isRenovated);
+//    public House addHouse(int index,
+//    String address,int yearBuilt,
+//    double numBaths,boolean isRenovated){
+//        House newHouse = new House
+//        (address,yearBuilt,numBaths,isRenovated);
 //        if(index >= this.houses.length){
 //            return null;
 //        }
 //        if(this.houses[index] == null){
-//            this.houses[index] = new_house;
+//            this.houses[index] = newHouse;
 //            return null;
 //        }
 //        else if(index < this.houses.length){
-//            House old_house = this.houses[index];
+//            House oldHouse = this.houses[index];
 //            this.numHouses += 1;
-//            this.houses[index] = new_house;
-//            return old_house;
+//            this.houses[index] = newHouse;
+//            return oldHouse;
 //        }
 //        else{
 //            return null;
 //        }
 //    }
 
-    public House removeHouse(int index){
-        if(this.houses == null && index < this.houses.length){
+    public House removeHouse(int index) {
+        if (this.houses == null && index < this.houses.length) {
             return null;
-        }
-        else if(this.houses != null && index < this.houses.length){
+        } else if (this.houses != null && index < this.houses.length) {
             House removedHouse = this.houses[index];
             this.houses[index] = null;
             this.numHouses -= 1;
             return removedHouse;
-        }
-        else{
+        } else {
             return null;
         }
     }
 
-    public boolean isFull(){
-        for(House house : this.houses){
-            if(house == null){
+    public boolean isFull() {
+        for (House house : this.houses) {
+            if (house == null) {
                 return false;
             }
         }
