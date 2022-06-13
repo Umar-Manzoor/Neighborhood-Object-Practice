@@ -1,62 +1,65 @@
-public class House{
+public class House {
     private String address;
     private int yearBuilt;
     private double numBaths;
     private boolean isRenovated;
 
-    public House(){
+    public House() {
         this("North Ave NW, Atlanta, GA 30332", 1984, 1, false);
     }
 
-    public House(String address, double numBaths){
+    public House(String address, double numBaths) {
         this(address, 1984, numBaths, false);
         this.address = address;
         this.numBaths = numBaths;
     }
-    public House(String address, int yearBuilt, double numBaths, boolean isRenovated){
+    public House(String address,
+                 int yearBuilt,
+                 double numBaths,
+                 boolean isRenovated) {
         this.address = address;
         this.yearBuilt = yearBuilt;
-        if(yearBuilt < 0){
+        if (yearBuilt < 0) {
             this.setYearBuilt(yearBuilt);
         }
         this.numBaths = numBaths;
-        if(numBaths % 0.5 != 0 && numBaths < 0){
+        if (numBaths % 0.5 != 0 && numBaths < 0) {
             this.setNumBaths(numBaths);
         }
         this.isRenovated = isRenovated;
     }
-    public String getAddress(){
+    public String getAddress() {
         return this.address;
     }
-    public int getYearBuilt(){
+    public int getYearBuilt() {
         return this.yearBuilt;
     }
-    public double getNumBaths(){
+    public double getNumBaths() {
         return this.numBaths;
     }
-    public boolean getIsRenovated(){
+    public boolean getIsRenovated() {
         return this.isRenovated;
     }
-    public void setAddress(String address){
+    public void setAddress(String address) {
         this.address = address;
     }
     public void setYearBuilt(int yearBuilt) {
-        if (yearBuilt >= 0){
+        if (yearBuilt >= 0) {
             this.yearBuilt = yearBuilt;
         }
-        //else{
+        //else {
             //this.yearBuilt = 1984;
-        //}
+        // }
     }
     public void setNumBaths(double numBaths) {
-        if ((numBaths % 0.5 == 0) && numBaths >=0){
+        if ((numBaths % 0.5 == 0) && numBaths >= 0) {
             this.numBaths = numBaths;
         }
-        //else{
+        //else {
             //numBaths = 1;
-        //}
+        // }
     }
-    public void setIsRenovated(boolean isRenovated){
+    public void setIsRenovated(boolean isRenovated) {
         this.isRenovated = isRenovated;
     }
 }
